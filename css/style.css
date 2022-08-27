@@ -18,3 +18,46 @@ body{
     font-weight: bolder;
     color: white;
 }
+.container-ciclo, .container-nomes{
+    width: 80%;
+    margin-left: 10%;
+    height: auto;
+    margin-top: 95px;
+    padding: 20px;
+    border: 1px solid rgb(81, 14, 158);
+    border-radius: 15px;
+}
+.title-container{
+    font-size: 18pt;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.title-grupo{
+    font-size: 15pt;
+    text-align: center;
+    font-weight: bold;
+}
+.title-membros{
+    font-size: 13pt;
+    text-align: center;
+}
+.space{
+    margin-bottom: 20px;
+}
+.button{
+    width: 100%;
+    text-align: center;
+}
+.btn-edit{
+    margin-top: 20px;
+    width: 120px;
+    background-color: rgb(81, 14, 158);
+    border-color: rgb(81, 14, 158);
+    color: white;
+}
+.btn-edit:hover{
+    background-color: rgb(93, 17, 179);
+    border-color: rgb(92, 17, 179);
+    color: white;
+}

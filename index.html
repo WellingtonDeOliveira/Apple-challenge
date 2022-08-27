@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+        var bool = false;
+    </script>
     <title>Primeira Etapa do desafio</title>
 </head>
+
 <body>
     <div class="header">
         <p class="title">Sistema de Ciclos</p>
     </div>
-    <div class="container">
-
+    <div class="container-nomes" style="display: none;">
+        <h2 class="title-container">Atuais membros</h2>
+        <div class="row row-nomes"></div>
+    </div>
+    <div class="container-ciclo">
+        <h2 class="title-container">Ciclo atual</h2>
+        <div class="row row-ciclo"></div>
+    </div>
+    <!-- <div class="container-ciclo-edit">
+        <h2 class="title-container">Adicionar novo ciclo</h2>
+        <form>
+            <label name=""></label>
+            <input type="submit">
+        </form>
+    </div> -->
+    <div class="button">
+        <input class="btn btn-edit" type="button" value="Trocar" onclick="change()">
     </div>
 </body>
 <script src="./js/jquery.js"></script>
 <script src="./js/index.js"></script>
+
 </html>
