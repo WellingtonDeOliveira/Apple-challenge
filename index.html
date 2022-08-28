@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <script src="./js/FileSaver.js"></script>
     <script>
         var bool = false;
     </script>
@@ -13,24 +14,46 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <div class="header">
         <p class="title">Sistema de Ciclos</p>
     </div>
+    <!-- painel de membros -->
     <div class="container-nomes" style="display: none;">
         <h2 class="title-container">Atuais membros</h2>
         <div class="row row-nomes"></div>
     </div>
+    <!-- painel de ciclo atual -->
     <div class="container-ciclo">
         <h2 class="title-container">Ciclo atual</h2>
         <div class="row row-ciclo"></div>
     </div>
-    <!-- <div class="container-ciclo-edit">
+    <!-- Formulario adicionar novo ciclo -->
+    <div class="alert alert-warning warning" style="display: none;"></div>
+    <div class="alert alert-success success" style="display: none;"></div>
+    <div class="container-ciclo-edit">
         <h2 class="title-container">Adicionar novo ciclo</h2>
-        <form>
-            <label name=""></label>
-            <input type="submit">
+        <form class="form-container">
+            <div class="mb-6">
+                <label class="form-label">Quantidade de grupos</label>
+                <input type="number" class="form-control input-style" placeholder="digite valores de 2-10" maxlength="2"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    required>
+            </div>
+            <input class="btn btn-edit" type="button" value="Cadastrar" onclick="adicionarCiclo();">
         </form>
-    </div> -->
+    </div>
+    <!-- Formulario adcionar novo membro -->
+    <div class="container-nomes-edit" style="display: none;">
+        <h2 class="title-container">Adicionar novo membro</h2>
+        <form class="form-container">
+            <div class="mb-6">
+                <label class="form-label">Nome do novo membro</label>
+                <input type="text" class="form-control input-style-nomes" placeholder="digite aqui" required>
+            </div>
+            <input class="btn btn-edit" type="button" value="Adicionar" onclick="adicionarMembro();">
+        </form>
+    </div>
     <div class="button">
         <input class="btn btn-edit" type="button" value="Trocar" onclick="change()">
     </div>
