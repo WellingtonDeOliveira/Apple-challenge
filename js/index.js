@@ -103,8 +103,8 @@ function adicionarCiclo() {
             var qtd = $(".input-style").val();
             $(".form-control").val('');
             //console.log(tamanho);
-            $.get("http://127.0.0.1:5500/json/nomes.json", function (nomes) {
-                $.get("http://127.0.0.1:5500/json/ciclos.json", function (ciclos) {
+            $.get("https://wellingtondeoliveira.github.io/Apple-challenge/json/nomes.json", function (nomes) {
+                $.get("https://wellingtondeoliveira.github.io/Apple-challenge/json/ciclos.json", function (ciclos) {
                     /* Criação dos matriz, que serve para dizer qual as melhores conbinações */
                     var array = [];
                     for (let i = 0; i < nomes.nomes.length; i++) {
@@ -293,13 +293,13 @@ function adicionarCiclo() {
                     conteudo += '}';
                     //console.log(conteudo);
                     atualizarValores(final);
-                    // data = "text/json;charset=utf-8," + encodeURIComponent(conteudo);
-                    // var a = document.createElement("a");
-                    // document.body.appendChild(a);
-                    // a.style = "display: none";
-                    // a.href = 'data:' + data;
-                    // a.download = "data.json";
-                    // a.click();
+                    data = "text/json;charset=utf-8," + encodeURIComponent(conteudo);
+                    var a = document.createElement("a");
+                    document.body.appendChild(a);
+                    a.style = "display: none";
+                    a.href = 'data:' + data;
+                    a.download = "data.json";
+                    a.click();
                 });
             });
         });
@@ -313,7 +313,7 @@ function adicionarCiclo() {
 
 /* as duas funções abaixo servem para fazer a leitura dos arquivos json, então mostrar os membros e o ciclo atual */
 $(document).ready(function () {
-    $.get("http://127.0.0.1:5500/json/nomes.json", function (data) {
+    $.get("https://wellingtondeoliveira.github.io/Apple-challenge/json/nomes.json", function (data) {
         //console.log(data.nomes);
         if (Math.trunc(data.nomes.length / 4) < (data.nomes.length / 4)) {
             var contador = (Math.trunc(data.nomes.length / 4) + 1);
@@ -339,7 +339,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $.get("http://127.0.0.1:5500/json/ciclos.json", function (data) {
+    $.get("https://wellingtondeoliveira.github.io/Apple-challenge/json/ciclos.json", function (data) {
         //console.log(data.ciclos[data.count - 1][1].length);
         for (let i = 0; i < data.ciclos[data.count - 1].length; i++) {
             $(".row-ciclo").append("<div class='col-12 col-sm-6 col-md-3 grupo" + i + " space'></div>");
