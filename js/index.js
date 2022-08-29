@@ -80,14 +80,8 @@ function atualizarValores(data) {
     console.log(data);
     document.querySelector(".row-ciclo").innerHTML = '';
     $(document).ready(function () {
-        const tamanho = data.length;
-        if ((12 / tamanho) < 2) {
-            var col = 3
-        } else {
-            var col = 4
-        }
         for (let i = 0; i < data.length; i++) {
-            $(".row-ciclo").append("<div class='col-" + col + " grupo" + i + " space'></div>");
+            $(".row-ciclo").append("<div class='col-12 col-sm-6 col-md-3 grupo" + i + " space'></div>");
             $(".grupo" + i).append("<h3 class='title-grupo' > Grupo " + (i + 1) + "</h3>");
             for (let j = 0; j < data[i].length; j++) {
                 $(".grupo" + i).append("<h4 class='title-membros' >" + data[i][j] + "</h4>");
