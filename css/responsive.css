@@ -1,0 +1,33 @@
+@media screen and (max-width: 767px) {
+    .title{
+        font-size: 13pt;
+    }
+    .title-container{
+        font-size: 16pt;
+    }
+    .title-grupo{
+        font-size: 13pt;
+    }
+    .title-membros{
+        font-size: 11pt;
+    }
+    .form-container{
+        width: 70%;
+        margin-left: 15%;
+    }
+    .input-style, .input-style-nomes{
+        width: 60%;
+        margin-left: 20%;
+    }
+}
+@media screen and (max-width: 480px) {
+    .form-container{
+        width: 80%;
+        margin-left: 10%;
+    }
+    .input-style, .input-style-nomes{
+        width: 80%;
+        margin-left: 10%;
+    }
+    
+}
