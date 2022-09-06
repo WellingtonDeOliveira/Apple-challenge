@@ -73,11 +73,56 @@ function indiceNome(array_totais, array_nomes) {
 
 function adicionarMembro() {
     /* atualização futuras */
-    alert("Atualização futura...");
+    var newNome = $('.input-style-nomes').val();
+    if (newNome == '') {
+        /* Validação, caso o campo esteja vazio */
+        document.querySelector(".warning").innerHTML = '';
+        $('.warning').show();
+        $('.warning').append("<h5 style='text-align: center;'>Por favor, preencha o campo de novo membro.</h5>")
+    } else {
+        $(document).ready(function () {
+            $.get("http://127.0.0.1:5500/json/nomes.json", function (nomes) {
+                let conteudoBruto = '{';
+                conteudoBruto += '"nomes": [';
+                for (let i = 0; i < nomes.nomes.length; i++) {
+                    conteudoBruto += JSON.stringify(nomes.nomes[i]) + ',';
+                }
+                // acresentando valor do novo ciclo
+                conteudoBruto += '"' + newNome + '"';
+                // fim dos ciclos
+                conteudoBruto += ']}';
+                //console.log(conteudo);
+                var conteudo = JSON.parse(conteudoBruto);
+                document.querySelector(".row-nomes").innerHTML = '';
+                if (Math.trunc(conteudo.nomes.length / 4) < (conteudo.nomes.length / 4)) {
+                    var contador = (Math.trunc(conteudo.nomes.length / 4) + 1);
+                    var cont = contador;
+                } else {
+                    var contador = (Math.trunc(conteudo.nomes.length / 4));
+                    var cont = contador;
+                }
+                //console.log(contador);
+                var controlador = 1;
+                $(".row-nomes").append("<div class='col-12 col-sm-6 col-md-3 grupo-nomes" + controlador + " space'></div>");
+                for (let i = 0; i < conteudo.nomes.length; i++) {
+                    if (contador == (i)) {
+                        //console.log(contador + "/" + i);
+                        contador += cont;
+                        controlador++;
+                        $(".row-nomes").append("<div class='col-12 col-sm-6 col-md-3 grupo-nomes" + controlador + " space'></div>");
+                    }
+                    //console.log("Nome: " + conteudo.nomes[i]);
+                    $(".grupo-nomes" + controlador).append("<h2 class='title-membros' >" + conteudo.nomes[i] + "</h2>")
+                }
+            });
+        });
+        $('.success').show();
+        $('.success').append("<h5 style='text-align: center;'>Novo membro adicionado com sucesso, <strong>caso atualize a página perdera a visualização.</strong></h5>")
+        console.log(newNome);
+    }
 }
 
 function atualizarValores(data) {
-    console.log(data);
     document.querySelector(".row-ciclo").innerHTML = '';
     $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
@@ -103,8 +148,8 @@ function adicionarCiclo() {
             var qtd = $(".input-style").val();
             $(".form-control").val('');
             //console.log(tamanho);
-            $.get("https://wellingtondeoliveira.github.io/Apple-challenge/json/nomes.json", function (nomes) {
-                $.get("https://wellingtondeoliveira.github.io/Apple-challenge/json/ciclos.json", function (ciclos) {
+            $.get("http://127.0.0.1:5500/json/nomes.json", function (nomes) {
+                $.get("http://127.0.0.1:5500/json/ciclos.json", function (ciclos) {
                     /* Criação dos matriz, que serve para dizer qual as melhores conbinações */
                     var array = [];
                     for (let i = 0; i < nomes.nomes.length; i++) {
@@ -134,7 +179,7 @@ function adicionarCiclo() {
                         }
                         array.push(arrayPopulacao);
                     }
-                    //console.log(array);
+                    console.log(array);
                     var array_total = [];
                     let array_escolhas = [];
                     let array_verificacao = [];
@@ -313,7 +358,7 @@ function adicionarCiclo() {
 
 /* as duas funções abaixo servem para fazer a leitura dos arquivos json, então mostrar os membros e o ciclo atual */
 $(document).ready(function () {
-    $.get("https://wellingtondeoliveira.github.io/Apple-challenge/json/nomes.json", function (data) {
+    $.get("http://127.0.0.1:5500/json/nomes.json", function (data) {
         //console.log(data.nomes);
         if (Math.trunc(data.nomes.length / 4) < (data.nomes.length / 4)) {
             var contador = (Math.trunc(data.nomes.length / 4) + 1);
@@ -339,7 +384,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $.get("https://wellingtondeoliveira.github.io/Apple-challenge/json/ciclos.json", function (data) {
+    $.get("http://127.0.0.1:5500/json/ciclos.json", function (data) {
         //console.log(data.ciclos[data.count - 1][1].length);
         for (let i = 0; i < data.ciclos[data.count - 1].length; i++) {
             $(".row-ciclo").append("<div class='col-12 col-sm-6 col-md-3 grupo" + i + " space'></div>");
